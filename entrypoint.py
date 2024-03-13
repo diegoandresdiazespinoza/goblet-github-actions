@@ -43,7 +43,7 @@ if __name__ == "__main__":
         pip_install_poetry = subprocess.run(["pip", "install", f"poetry=={poetry_version}"], capture_output=True)
         poetry_config = subprocess.run(["poetry", "config", "virtualenvs.create", "false"], capture_output=True)
         poetry_install = subprocess.run(["poetry", "install", "--only", "main", "--no-root"], capture_output=True)
-        if pip_install_poetry.returncode != 0 or poetry_config.returncode != 0 or poetry_install.returncode != 0 or poetry_requirements.returncode != 0:
+        if pip_install_poetry.returncode != 0 or poetry_config.returncode != 0 or poetry_install.returncode != 0:
             raise Exception(
                 [f"Pip install stderr returncode= {pip_install_poetry.returncode} {pip_install_poetry.stderr}",
                  f"Poetry config stderr returncode= {poetry_config.returncode} {poetry_config.stderr}",
